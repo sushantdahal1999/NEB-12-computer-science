@@ -8,30 +8,27 @@ struct Student {
 };
 
 int main() {
-    struct Student students[5];
+    struct Student s[5];
     FILE *fptr;
     int i;
 
     // Open file in write mode
     fptr = fopen("students.txt", "w");
-    if (fptr == NULL) {
-        printf("Error opening file!\n");
-        return 1;
-    }
+ 
 
     // Input student details
     for (i = 0; i < 5; ++i) {
         printf("Enter name of student %d: ", i + 1);
-        scanf(" %[^\n]", students[i].name);
+        scanf("%s", s[i].name);
         printf("Enter roll number of student %d: ", i + 1);
-        scanf("%d", &students[i].roll);
+        scanf("%d", &s[i].roll);
         printf("Enter marks of student %d: ", i + 1);
-        scanf("%f", &students[i].marks);
+        scanf("%f", &s[i].marks);
 
         // Write to file
-        fprintf(fptr, "Name: %s\n", students[i].name);
-        fprintf(fptr, "Roll Number: %d\n", students[i].roll);
-        fprintf(fptr, "Marks: %.2f\n\n", students[i].marks);
+        fprintf(fptr, "Name: %s\n", s[i].name);
+        fprintf(fptr, "Roll Number: %d\n", s[i].roll);
+        fprintf(fptr, "Marks: %.2f\n\n", s[i].marks);
     }
 
     fclose(fptr);
